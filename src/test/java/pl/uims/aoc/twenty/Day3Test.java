@@ -2,12 +2,7 @@ package pl.uims.aoc.twenty;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import pl.uims.aoc.ResourcesService;
 
 class Day3Test {
 
@@ -25,8 +20,7 @@ class Day3Test {
             {'.','#','.','.','#','.','.','.','#','.','#'}
     };
 
-    private char[][] PUZZLE_DATA = readInput("D:/Programowanie/Java/Workspace/AoC2020Java/src/test/resources/2020_day3_input.txt");
-
+    private char[][] PUZZLE_DATA = ResourcesService.getDay3PuzzleInput();
 
     @Test
     public void testPar1Examples() {
@@ -94,23 +88,6 @@ class Day3Test {
 
         //correct: 4723283400
         System.out.println(String.format("Day3 Part2 result is %d", result));
-    }
-
-    private char[][] readInput(final String filePath) {
-        final List<String> lines = new ArrayList<>();
-        BufferedReader reader;
-        try {
-            reader = new BufferedReader(new FileReader(filePath));
-            String line = reader.readLine();
-            while (line != null) {
-                lines.add(line);
-                line = reader.readLine();
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return  lines.stream().map(l -> l.toCharArray()).toArray(char[][]::new);
     }
 
 }

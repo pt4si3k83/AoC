@@ -2,24 +2,21 @@ package pl.uims.aoc.twenty;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pl.uims.aoc.ResourcesService;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
-
+import java.util.List;
+import java.util.Map;
 
 class Day4Test {
 
-    private List<Map<String,String>> PUZZLE_DATA = readInput("D:/Programowanie/Java/Workspace/AoC2020Java/src/test/resources/2020_day4_input.txt");
+    private List<Map<String,String>> PUZZLE_DATA = ResourcesService.getDay4PuzzleInput();
     private final Day4 day4 = new Day4();
 
     @Test
     public void testPart1Example() {
 
         //given
-        List<Map<String,String>> data = readInput("D:/Programowanie/Java/Workspace/AoC2020Java/src/test/resources/2020_day4_example_input.txt");
+        List<Map<String,String>> data = ResourcesService.getDay4PuzzleExampleInput();
 
         //when
         boolean isPassport1Valid = day4.hasValidFields(data.get(0));
@@ -29,9 +26,9 @@ class Day4Test {
 
         //then
         Assertions.assertTrue(isPassport1Valid);
-        Assertions.assertTrue(!isPassport2Valid);
+        Assertions.assertFalse(isPassport2Valid);
         Assertions.assertTrue(isPassport3Valid);
-        Assertions.assertTrue(!isPassport4Valid);
+        Assertions.assertFalse(isPassport4Valid);
 
     }
 
@@ -39,7 +36,7 @@ class Day4Test {
     public void testPart1Solution() {
 
         //when
-        long result = PUZZLE_DATA.stream().filter( passport -> day4.hasValidFields(passport) ).count();
+        long result = PUZZLE_DATA.stream().filter(day4::hasValidFields).count();
 
         //then
         Assertions.assertTrue(result > 0);
@@ -53,7 +50,7 @@ class Day4Test {
     public void testPart2InvalidExamples() {
 
         //given
-        List<Map<String,String>> data = readInput("D:/Programowanie/Java/Workspace/AoC2020Java/src/test/resources/2020_day4_example_inv_input.txt");
+        List<Map<String,String>> data = ResourcesService.getDay4PuzzleExampleInvalidInput();
 
         //when
         boolean isPassport1Valid = day4.hasValidFieldsAndValues(data.get(0));
@@ -62,10 +59,10 @@ class Day4Test {
         boolean isPassport4Valid = day4.hasValidFieldsAndValues(data.get(3));
 
         //then
-        Assertions.assertTrue(!isPassport1Valid);
-        Assertions.assertTrue(!isPassport2Valid);
-        Assertions.assertTrue(!isPassport3Valid);
-        Assertions.assertTrue(!isPassport4Valid);
+        Assertions.assertFalse(isPassport1Valid);
+        Assertions.assertFalse(isPassport2Valid);
+        Assertions.assertFalse(isPassport3Valid);
+        Assertions.assertFalse(isPassport4Valid);
 
     }
 
@@ -73,7 +70,7 @@ class Day4Test {
     public void testPart2ValidExamples() {
 
         //given
-        List<Map<String,String>> data = readInput("D:/Programowanie/Java/Workspace/AoC2020Java/src/test/resources/2020_day4_example_val_input.txt");
+        List<Map<String,String>> data = ResourcesService.getDay4PuzzleExampleValidInput();
 
         //when
         boolean isPassport1Valid = day4.hasValidFieldsAndValues(data.get(0));
@@ -93,7 +90,7 @@ class Day4Test {
     public void testPart2Solution() {
 
         //when
-        long result = PUZZLE_DATA.stream().filter( passport -> day4.hasValidFieldsAndValues(passport) ).count();
+        long result = PUZZLE_DATA.stream().filter(day4::hasValidFieldsAndValues).count();
 
         //then
         Assertions.assertTrue(result > 0);
@@ -103,36 +100,6 @@ class Day4Test {
 
     }
 
-    private List<Map<String,String>> readInput(final String filePath) {
-        final List<Map<String,String>> passports = new ArrayList<>();
-        BufferedReader reader;
-        try {
-            reader = new BufferedReader(new FileReader(filePath));
-            String line = reader.readLine();
 
-            Map<String,String> map = new HashMap<>();
-
-            while (line != null) {
-                if(line.length() == 0){
-                    passports.add(map);
-                    map = new HashMap<>();
-                } else {
-                    map.putAll(Arrays.stream(line.split(" ")).map( entry -> entry.split(":")).collect(Collectors.toMap( entry -> entry[0], entry -> entry[1])));
-                }
-
-                line = reader.readLine();
-            }
-            reader.close();
-
-            if(!map.isEmpty()){
-                passports.add(map);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return  passports;
-    }
 
 }
