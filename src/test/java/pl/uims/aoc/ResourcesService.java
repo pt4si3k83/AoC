@@ -104,4 +104,21 @@ public class ResourcesService {
         }
         return  lines;
     }
+
+    public static List<String> getDay6PuzzleInput() {
+        final List<String> lines = new ArrayList<>();
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(RESOURCES_PATH + "2020_day6_input.txt"));
+            String line = reader.readLine();
+            while (line != null) {
+                lines.add(line);
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  lines;
+    }
 }
