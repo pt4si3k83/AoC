@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static pl.uims.aoc.twenty.support.AocConstants.*;
+
 public class Day2Validator {
 
     private int rangeFrom;
@@ -23,7 +25,7 @@ public class Day2Validator {
             throw new ParseException("String params cannot be null or empty", 0);
         }
 
-        final String[] args = params.split( " ");
+        final String[] args = params.split(SPACE);
 
         if(args.length != 3) {
             throw new ParseException("Incorrect amount of args after string was split.", 0);
@@ -32,7 +34,7 @@ public class Day2Validator {
         List<Integer> range = null;
 
         try {
-            range = Stream.of(args[0].split("-") ).map(s -> Integer.parseInt(s) ).collect(Collectors.toList());
+            range = Stream.of(args[0].split(MINUS) ).map(Integer::parseInt).collect(Collectors.toList());
         } catch (Exception e) {
             throw new ParseException(e.getMessage(), 0);
         } finally {

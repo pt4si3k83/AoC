@@ -42,7 +42,7 @@ class Day4Test {
         Assertions.assertTrue(result > 0);
 
         //correct: 264
-        System.out.println(String.format("Day4 Part1 result is %d", result));
+        System.out.printf("Day4 Part1 result is %d%n", result);
 
     }
 
@@ -96,7 +96,7 @@ class Day4Test {
         Assertions.assertTrue(result > 0);
 
         //correct: 224
-        System.out.println(String.format("Day4 Part2 result is %d", result));
+        System.out.printf("Day4 Part2 result is %d%n", result);
 
     }
 

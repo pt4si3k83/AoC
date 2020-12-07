@@ -1,5 +1,7 @@
 package pl.uims.aoc.twenty;
 
+import pl.uims.aoc.twenty.support.AocConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -7,7 +9,6 @@ import java.util.stream.Collectors;
 
 public class Day6 {
 
-    private static final long EMPTY_RESULT = -1L;
 
     public long countGroups(List<String> data){
 
@@ -26,10 +27,8 @@ public class Day6 {
 
         }
 
-        return merged.stream().map( s -> s.chars().distinct().count() ).reduce(Long::sum).orElse(EMPTY_RESULT);
-
+        return merged.stream().map( s -> s.chars().distinct().count() ).reduce(Long::sum).orElse(AocConstants.NOT_FOUND);
     }
-
 
     public long countGroups2(List<String> data){
 

@@ -32,7 +32,7 @@ class Day2Test {
         //then
         Assertions.assertTrue(result > 0);
 
-        System.out.println(String.format("Day2 Part1 result is %d", result));
+        System.out.printf("Day2 Part1 result is %d%n", result);
     }
 
     @Test
@@ -54,7 +54,7 @@ class Day2Test {
         //then
         Assertions.assertTrue(result > 0);
 
-        System.out.println(String.format("Day2 Part2 result is %d", result));
+        System.out.printf("Day2 Part2 result is %d%n", result);
     }
 
 }

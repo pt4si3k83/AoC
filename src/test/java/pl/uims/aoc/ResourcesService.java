@@ -89,27 +89,22 @@ public class ResourcesService {
     }
 
     public static List<String> getDay5PuzzleInput() {
-        final List<String> lines = new ArrayList<>();
-        BufferedReader reader;
-        try {
-            reader = new BufferedReader(new FileReader(RESOURCES_PATH + "2020_day5_input.txt"));
-            String line = reader.readLine();
-            while (line != null) {
-                lines.add(line);
-                line = reader.readLine();
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return  lines;
+        return readLinesFromFile("2020_day5_input.txt");
     }
 
     public static List<String> getDay6PuzzleInput() {
+        return readLinesFromFile("2020_day6_input.txt");
+    }
+
+    public static List<String> getDay7PuzzleInput() {
+        return readLinesFromFile("2020_day7_input.txt");
+    }
+
+    private static List<String> readLinesFromFile(final String filename) {
         final List<String> lines = new ArrayList<>();
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(RESOURCES_PATH + "2020_day6_input.txt"));
+            reader = new BufferedReader(new FileReader(RESOURCES_PATH + filename));
             String line = reader.readLine();
             while (line != null) {
                 lines.add(line);

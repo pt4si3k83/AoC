@@ -32,7 +32,7 @@ class Day5Test {
         Assertions.assertTrue(result > 0);
 
         //correct: 996
-        System.out.println(String.format("Day5 Part1 result is %d", result));
+        System.out.printf("Day5 Part1 result is %d%n", result);
     }
 
     @Test
@@ -48,7 +48,7 @@ class Day5Test {
         Assertions.assertTrue(result > 0);
 
         //correct: 671
-        System.out.println(String.format("Day5 Part2 result is %d", result));
+        System.out.printf("Day5 Part2 result is %d%n", result);
     }
 
 

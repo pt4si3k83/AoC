@@ -1,7 +1,6 @@
 package pl.uims.aoc.twenty;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import pl.uims.aoc.ResourcesService;
 
@@ -43,7 +42,7 @@ class Day1Test {
         Assertions.assertNotEquals(0, result);
 
         //expected: 877971
-        System.out.println(String.format("Day1 Part1 result is %d", result));
+        System.out.printf("Day1 Part1 result is %d%n", result);
     }
 
     @Test
@@ -56,33 +55,7 @@ class Day1Test {
         Assertions.assertNotEquals(0, result);
 
         //expected: 203481432
-        System.out.println(String.format("Day1 Part2 result is %d", result));
+        System.out.printf("Day1 Part2 result is %d%n", result);
     }
-
-    @Test
-    @Disabled
-    public void performanceTest1() {
-
-        int size = 10;
-
-        int arr[][] = new int[size][size];
-
-        for(int x=0;x<size;x++){
-            for(int y=x;y<size;y++){
-                arr[x][y] = 1;
-            }
-        }
-
-        for(int x=0;x<size;x++){
-            for(int y=0;y<size;y++){
-                System.out.print("\t" + arr[x][y]);
-            }
-            System.out.println("");
-        }
-
-    }
-
-
-
 
 }

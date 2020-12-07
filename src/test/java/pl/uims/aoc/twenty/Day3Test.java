@@ -50,7 +50,7 @@ class Day3Test {
         Assertions.assertTrue(result > 0);
 
         //correct: 187
-        System.out.println(String.format("Day3 Part1 result is %d", result));
+        System.out.printf("Day3 Part1 result is %d%n", result);
     }
 
     @Test
@@ -87,7 +87,7 @@ class Day3Test {
         Assertions.assertTrue(result > 0);
 
         //correct: 4723283400
-        System.out.println(String.format("Day3 Part2 result is %d", result));
+        System.out.printf("Day3 Part2 result is %d%n", result);
     }
 
 }
