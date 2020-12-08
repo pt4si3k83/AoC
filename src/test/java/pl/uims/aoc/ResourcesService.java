@@ -100,6 +100,10 @@ public class ResourcesService {
         return readLinesFromFile("2020_day7_input.txt");
     }
 
+    public static List<String> getDay8PuzzleInput() {
+        return readLinesFromFile("2020_day8_input.txt");
+    }
+
     private static List<String> readLinesFromFile(final String filename) {
         final List<String> lines = new ArrayList<>();
         BufferedReader reader;
