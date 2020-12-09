@@ -104,6 +104,24 @@ public class ResourcesService {
         return readLinesFromFile("2020_day8_input.txt");
     }
 
+    public static List<Long> getDay9PuzzleInput() {
+
+        final List<Long> lines = new ArrayList<>();
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(RESOURCES_PATH + "2020_day9_input.txt"));
+            String line = reader.readLine();
+            while (line != null) {
+                lines.add(Long.parseLong(line));
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  lines;
+    }
+
     private static List<String> readLinesFromFile(final String filename) {
         final List<String> lines = new ArrayList<>();
         BufferedReader reader;
