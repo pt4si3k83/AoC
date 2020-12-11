@@ -23,21 +23,8 @@ public class ResourcesService {
     }
 
     public static char[][] getDay3PuzzleInput() {
-
-        final List<String> lines = new ArrayList<>();
-        BufferedReader reader;
-        try {
-            reader = new BufferedReader(new FileReader(RESOURCES_PATH + "2020_day3_input.txt"));
-            String line = reader.readLine();
-            while (line != null) {
-                lines.add(line);
-                line = reader.readLine();
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return  lines.stream().map(l -> l.toCharArray()).toArray(char[][]::new);
+        return readLinesFromFile("2020_day3_input.txt")
+                .stream().map(l -> l.toCharArray()).toArray(char[][]::new);
     }
 
     public static List<Map<String,String>> getDay4PuzzleInput() {
@@ -70,7 +57,9 @@ public class ResourcesService {
                     passports.add(map);
                     map = new HashMap<>();
                 } else {
-                    map.putAll(Arrays.stream(line.split(" ")).map(entry -> entry.split(":")).collect(Collectors.toMap(entry -> entry[0], entry -> entry[1])));
+                    map.putAll(Arrays.stream(line.split(" "))
+                                     .map(entry -> entry.split(":"))
+                                     .collect(Collectors.toMap(entry -> entry[0], entry -> entry[1])));
                 }
 
                 line = reader.readLine();
@@ -105,21 +94,13 @@ public class ResourcesService {
     }
 
     public static List<Long> getDay9PuzzleInput() {
+       return readLinesFromFile("2020_day9_input.txt")
+               .stream().map(Long::parseLong).collect(Collectors.toList());
+    }
 
-        final List<Long> lines = new ArrayList<>();
-        BufferedReader reader;
-        try {
-            reader = new BufferedReader(new FileReader(RESOURCES_PATH + "2020_day9_input.txt"));
-            String line = reader.readLine();
-            while (line != null) {
-                lines.add(Long.parseLong(line));
-                line = reader.readLine();
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return  lines;
+    public static List<Long> getDay10PuzzleInput() {
+        return readLinesFromFile("2020_day10_input.txt")
+                .stream().map(Long::parseLong).collect(Collectors.toList());
     }
 
     private static List<String> readLinesFromFile(final String filename) {
