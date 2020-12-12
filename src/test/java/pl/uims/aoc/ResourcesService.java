@@ -24,7 +24,7 @@ public class ResourcesService {
 
     public static char[][] getDay3PuzzleInput() {
         return readLinesFromFile("2020_day3_input.txt")
-                .stream().map(l -> l.toCharArray()).toArray(char[][]::new);
+                .stream().map(String::toCharArray).toArray(char[][]::new);
     }
 
     public static List<Map<String,String>> getDay4PuzzleInput() {
@@ -101,6 +101,11 @@ public class ResourcesService {
     public static List<Long> getDay10PuzzleInput() {
         return readLinesFromFile("2020_day10_input.txt")
                 .stream().map(Long::parseLong).collect(Collectors.toList());
+    }
+
+    public static char[][] getDay11PuzzleInput() {
+        return readLinesFromFile("2020_day11_input.txt")
+                .stream().map(String::toCharArray).toArray(char[][]::new);
     }
 
     private static List<String> readLinesFromFile(final String filename) {

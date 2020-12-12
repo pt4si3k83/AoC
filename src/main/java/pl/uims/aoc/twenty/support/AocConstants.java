@@ -14,6 +14,8 @@ public class AocConstants {
 
     public static final String REGEX_DOT = "\\.";
 
+    public static final Integer I_ZERO = 0;
+
     private AocConstants(){
     }
 }
