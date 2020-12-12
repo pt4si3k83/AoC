@@ -79,19 +79,19 @@ public class Day11 {
                 cx += vx;
                 cy += vy;
 
-                char c;
+                char charAt;
 
                 try {
-                    c = data[cx][cy];
+                    charAt = data[cx][cy];
                 } catch(IndexOutOfBoundsException e){
                     return 0;
                 }
 
-                if(c == OCCUPIED_SEAT){
+                if(charAt == OCCUPIED_SEAT){
                     return 1;
                 }
 
-                if(c == FREE_SEAT){
+                if(charAt == FREE_SEAT){
                     return 0;
                 }
             }
@@ -101,14 +101,16 @@ public class Day11 {
 
     public int doRounds(final char[][] data, int roundCount){
 
-        char[][] d = data;
+        char[][] localData = data;
+
+        Part1LookupStrategy strategy = new Part1LookupStrategy();
 
         do {
-            d = swapSeats(d, new Part1LookupStrategy());
+            localData = swapSeats(localData, strategy);
             roundCount--;
         } while (roundCount>0);
 
-        return countOccupiedSeats(d);
+        return countOccupiedSeats(localData);
     }
 
     public int solvePart1(final char[][] data){
@@ -121,7 +123,7 @@ public class Day11 {
 
     private int doRoundsTillItsStable(final char[][] data, final LookupStrategy strategy){
 
-        char[][] d = data;
+        char[][] localData = data;
 
         int prevOccupiedCount;
         int occupiedCount = -1;
@@ -130,8 +132,8 @@ public class Day11 {
         do {
             rounds++;
             prevOccupiedCount = occupiedCount;
-            d = swapSeats(d, strategy);
-            occupiedCount = countOccupiedSeats(d);
+            localData = swapSeats(localData, strategy);
+            occupiedCount = countOccupiedSeats(localData);
 
         } while (occupiedCount!=prevOccupiedCount);
 
