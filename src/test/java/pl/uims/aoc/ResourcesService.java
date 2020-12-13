@@ -108,6 +108,10 @@ public class ResourcesService {
                 .stream().map(String::toCharArray).toArray(char[][]::new);
     }
 
+    public static List<String> getDay12PuzzleInput() {
+        return readLinesFromFile("2020_day12_input.txt");
+    }
+
     private static List<String> readLinesFromFile(final String filename) {
         final List<String> lines = new ArrayList<>();
         BufferedReader reader;
